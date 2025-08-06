@@ -346,6 +346,7 @@ input:checked + .slider:before {
 }
 
 /* Modal Styles */
+/* Update your modal styles in admin.css */
 .modal {
     display: none;
     position: fixed;
@@ -355,17 +356,35 @@ input:checked + .slider:before {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto; /* Enable scrolling for the modal background */
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 5% auto;
+    margin: 2% auto; /* Reduced from 5% to give more space */
     padding: 2rem;
     border-radius: 12px;
     width: 90%;
     max-width: 600px;
     position: relative;
+    max-height: 90vh; /* Limit height to viewport */
+    overflow-y: auto; /* Enable scrolling for content */
+    box-sizing: border-box; /* Include padding in height calculation */
 }
+
+/* Add this to handle small screens */
+@media (max-height: 700px) {
+    .modal-content {
+        margin: 1% auto;
+        max-height: 98vh;
+    }
+}
+
+/* Prevent background scrolling when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
 
 .close-btn {
     position: absolute;
@@ -522,4 +541,286 @@ body.dark-mode .close-btn:hover {
 
 body.dark-mode footer {
     background-color: #1a1a1a;
+}
+
+
+/* Add these new styles to your existing admin.css */
+
+/* Image Preview Styles */
+.image-preview {
+    width: 100%;
+    height: 150px;
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    background-color: #f5f5f5;
+    border: 1px dashed #ddd;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: white;
+}
+
+.or-divider {
+    display: block;
+    text-align: center;
+    margin: 0.5rem 0;
+    color: #777;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.or-divider::before {
+    left: 0;
+}
+
+.or-divider::after {
+    right: 0;
+}
+
+/* Enhanced Availability Toggle */
+.availability-toggle-container {
+    margin: 1rem 0;
+}
+
+.availability-toggle {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 34px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    
+}
+
+.availability-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.availability-toggle .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e74c3c;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.availability-toggle .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 5px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.availability-toggle input:checked + .slider {
+    background-color: #27ae60;
+}
+
+.availability-toggle input:checked + .slider:before {
+    transform: translateX(46px);
+}
+
+.availability-toggle .labels {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.availability-toggle .labels:after {
+    content: attr(data-off);
+    position: absolute;
+    right: 10px;
+}
+
+.availability-toggle input:checked ~ .labels:after {
+    content: attr(data-on);
+    left: 10px;
+    right: auto;
+}
+
+/* Enhanced Product Card */
+.product-card {
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.product-name {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.product-availability {
+    margin-left: 1rem;
+    margin-bottom: 0;
+}
+
+/* Form Group Enhancements */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #e67e22;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #d35400;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .image-preview {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+body.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="number"],
+body.dark-mode .form-group select {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-mode .or-divider {
+    color: #aaa;
+}
+
+body.dark-mode .or-divider::before,
+body.dark-mode .or-divider::after {
+    background-color: #444;
+}
+
+body.dark-mode .availability-toggle .slider {
+    background-color: #c0392b;
+}
+
+body.dark-mode .availability-toggle input:checked + .slider {
+    background-color: #218c74;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .product-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .product-availability {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .availability-toggle {
+        width: 70px;
+        height: 30px;
+    }
+    
+    .availability-toggle .slider:before {
+        height: 22px;
+        width: 22px;
+    }
+    
+    .availability-toggle .labels {
+        font-size: 10px;
+    }
 }

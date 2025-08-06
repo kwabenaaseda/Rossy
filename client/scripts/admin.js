@@ -62,22 +62,23 @@ function setupEventListeners() {
         });
     }
     
-    // Image upload handler
+    // Image upload handler with preview
     const productImageFile = document.getElementById('productImageFile');
+    const productImageUrl = document.getElementById('productImage');
+    const imagePreview = document.getElementById('imagePreview');
+    
     if (productImageFile) {
         productImageFile.addEventListener('change', handleImageUpload);
     }
     
-    // Availability toggle
-    const rollerBody = document.getElementById('rollerBodys');
-    const roller = document.getElementById('rollers');
-    const availabilityStatus = document.getElementById('availabilityStatus');
-    
-    if (rollerBody && roller && availabilityStatus) {
-        rollerBody.addEventListener('click', () => {
-            roller.classList.toggle('active');
-            rollerBody.classList.toggle('active');
-            availabilityStatus.textContent = roller.classList.contains('active') ? "In Stock" : "Out of Stock";
+    if (productImageUrl) {
+        productImageUrl.addEventListener('input', function() {
+            if (this.value) {
+                imagePreview.innerHTML = `<img src="${this.value}" alt="Product Preview">`;
+                imagePreview.style.display = 'block';
+            } else {
+                imagePreview.style.display = 'none';
+            }
         });
     }
 }
@@ -88,10 +89,13 @@ let currentProductId = null;
 function handleImageUpload(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
+    const imagePreview = document.getElementById('imagePreview');
 
     reader.onload = function(event) {
         uploadedImageData = event.target.result;
         document.getElementById('productImage').value = '';
+        imagePreview.innerHTML = `<img src="${uploadedImageData}" alt="Uploaded Preview">`;
+        imagePreview.style.display = 'block';
     };
 
     if (file) {
@@ -103,6 +107,13 @@ function openModal(product = null) {
     const modal = document.getElementById('productModal');
     const modalTitle = document.getElementById('modalTitle');
     const submitBtn = document.getElementById('submitBtn');
+    const imagePreview = document.getElementById('imagePreview');
+    
+    // Reset form and preview
+    document.getElementById('productForm').reset();
+    imagePreview.style.display = 'none';
+    imagePreview.innerHTML = '';
+    uploadedImageData = null;
     
     if (product) {
         // Edit mode
@@ -116,48 +127,41 @@ function openModal(product = null) {
         document.getElementById('productPrice').value = product.price;
         document.getElementById('currency').value = product.country;
         
-        const rollerBody = document.getElementById('rollerBodys');
-        const roller = document.getElementById('rollers');
-        const availabilityStatus = document.getElementById('availabilityStatus');
-        
+        // Set availability toggle
+        const availabilityToggle = document.getElementById('availabilityToggle');
         if (product.availability === "In Stock") {
-            roller.classList.add('active');
-            rollerBody.classList.add('active');
-            availabilityStatus.textContent = "In Stock";
+            availabilityToggle.checked = true;
         } else {
-            roller.classList.remove('active');
-            rollerBody.classList.remove('active');
-            availabilityStatus.textContent = "Out of Stock";
+            availabilityToggle.checked = false;
         }
         
+        // Set image preview
         if (product.image) {
-            document.getElementById('productImage').value = product.image;
-            uploadedImageData = product.image;
+            if (product.image.startsWith('data:')) {
+                uploadedImageData = product.image;
+                imagePreview.innerHTML = `<img src="${product.image}" alt="Product Preview">`;
+            } else {
+                document.getElementById('productImage').value = product.image;
+                imagePreview.innerHTML = `<img src="${product.image}" alt="Product Preview">`;
+            }
+            imagePreview.style.display = 'block';
         }
     } else {
         // Add mode
         modalTitle.textContent = "Add New Product";
         submitBtn.textContent = "Add Product";
         currentProductId = null;
-        document.getElementById('productForm').reset();
-        
-        const rollerBody = document.getElementById('rollerBodys');
-        const roller = document.getElementById('rollers');
-        const availabilityStatus = document.getElementById('availabilityStatus');
-        
-        roller.classList.remove('active');
-        rollerBody.classList.remove('active');
-        availabilityStatus.textContent = "Out of Stock";
-        
-        uploadedImageData = null;
+        document.getElementById('availabilityToggle').checked = false;
     }
     
     modal.style.display = "block";
+    document.body.classList.add('modal-open');
 }
 
 function closeModal() {
     const modal = document.getElementById('productModal');
     modal.style.display = "none";
+    document.body.classList.remove('modal-open');
     currentProductId = null;
 }
 
@@ -167,7 +171,7 @@ function handleFormSubmit() {
     const productCountry = document.getElementById('currency').value;
     const productCategory = document.getElementById('productCategory').value;
     const productImage = uploadedImageData || document.getElementById('productImage').value;
-    const roller = document.getElementById('rollers');
+    const availabilityToggle = document.getElementById('availabilityToggle');
     
     if (!productName || !productPrice || !productCountry || !productCategory) {
         alert('Please fill in all required fields');
@@ -175,7 +179,7 @@ function handleFormSubmit() {
     }
 
     const products = JSON.parse(localStorage.getItem('products')) || [];
-    const availability = roller.classList.contains('active') ? "In Stock" : "Out of Stock";
+    const availability = availabilityToggle.checked ? "In Stock" : "Out of Stock";
     
     if (currentProductId) {
         // Update existing product
@@ -188,7 +192,7 @@ function handleFormSubmit() {
                 country: productCountry,
                 availability,
                 category: productCategory,
-                image: productImage || products[index].image
+                image: productImage || products[index].image || '../images/default-product.jpg'
             };
         }
     } else {
@@ -220,7 +224,7 @@ function loadProducts() {
     const products = JSON.parse(localStorage.getItem('products')) || [];
     
     if (products.length === 0) {
-        productsGrid.innerHTML = '<p>No products found. Add your first product!</p>';
+        productsGrid.innerHTML = '<p class="no-products">No products found. Add your first product!</p>';
         return;
     }
     
@@ -229,12 +233,14 @@ function loadProducts() {
         productCard.className = 'product-card';
         
         productCard.innerHTML = `
-            <h3 class="product-name">${product.Name}</h3>
+            <div class="product-header">
+                <h3 class="product-name">${product.Name}</h3>
+                <span class="product-availability ${product.availability === "In Stock" ? "in-stock" : "out-of-stock"}">
+                    ${product.availability}
+                </span>
+            </div>
             <p class="product-category">${product.category}</p>
-            <p class="product-price">${product.country} ${product.price}</p>
-            <span class="product-availability ${product.availability === "In Stock" ? "in-stock" : "out-of-stock"}">
-                ${product.availability}
-            </span>
+            <p class="product-price">${product.country} ${parseFloat(product.price).toFixed(2)}</p>
             <div class="product-actions">
                 <button class="edit-btn" data-id="${product.id}">Edit</button>
                 <button class="delete-btn" data-id="${product.id}">Delete</button>

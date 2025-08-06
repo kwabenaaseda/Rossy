@@ -90,60 +90,68 @@
         </section>
     </main>
 
-    <!-- Add Product Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 id="modalTitle">Add New Product</h2>
-            <form id="productForm">
+    <!-- Updated Add Product Modal -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modalTitle">Add New Product</h2>
+        <form id="productForm">
+            <div class="form-group">
+                <label for="productImage">Product Image URL</label>
+                <input type="text" id="productImage" placeholder="Paste image URL">
+                <span class="or-divider">OR</span>
+                <label for="productImageFile">Upload Image</label>
+                <input type="file" id="productImageFile" accept="image/*">
+                <div class="image-preview" id="imagePreview"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" placeholder="Enter product name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="productCategory">Category</label>
+                <select id="productCategory" required>
+                    <option value="">Select category</option>
+                    <option value="Sobolo">Sobolo</option>
+                    <option value="Herbal Infusion">Herbal Infusion</option>
+                    <option value="Traditional Brew">Traditional Brew</option>
+                    <option value="Fruit Drink">Fruit Drink</option>
+                    <option value="Specialty">Specialty</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
                 <div class="form-group">
-                    <label for="productImage">Product Image URL</label>
-                    <input type="text" id="productImage" placeholder="Paste image URL">
-                    <span class="or-divider">OR</span>
-                    <label for="productImageFile">Upload Image</label>
-                    <input type="file" id="productImageFile" accept="image/*">
+                    <label for="currency">Currency</label>
+                    <select name="currency" id="currency" required>
+                        <option value="">-- Choose currency --</option>
+                        <option value="GHC">Ghana (GHC)</option>
+                        <option value="USD">USA (USD)</option>
+                    </select>
                 </div>
-                
                 <div class="form-group">
-                    <label for="productName">Product Name</label>
-                    <input type="text" id="productName" placeholder="Enter product name" required>
+                    <label for="productPrice">Price</label>
+                    <input type="number" id="productPrice" placeholder="Enter price" step="0.01" required>
                 </div>
-                
-                <div class="form-group">
-                    <label for="productCategory">Category</label>
-                    <input type="text" id="productCategory" placeholder="Enter category" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Availability</label>
+                <div class="availability-toggle-container">
+                    <label class="availability-toggle">
+                        <input type="checkbox" id="availabilityToggle">
+                        <span class="slider"></span>
+                        <span class="labels" data-on="In Stock" data-off="Out of Stock"></span>
+                    </label>
                 </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="currency">Currency</label>
-                        <select name="currency" id="currency" required>
-                            <option value="">-- Choose currency --</option>
-                            <option value="GHC ">Ghana (GHC)</option>
-                            <option value="USD ">USA (USD)</option>
-                            <option value="¥ ">China (Yuan)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="productPrice">Price</label>
-                        <input type="number" id="productPrice" placeholder="Enter price" step="0.01" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Availability</label>
-                    <div class="availability-toggle">
-                        <div id="rollerBodys" class="roller-body">
-                            <div id="rollers" class="roller"></div>
-                        </div>
-                        <span id="availabilityStatus">Out of Stock</span>
-                    </div>
-                </div>
-                
-                <button type="submit" id="submitBtn" class="submit-btn">Save Product</button>
-            </form>
-        </div>
+            </div>
+            
+            <button type="submit" id="submitBtn" class="submit-btn">Save Product</button>
+        </form>
     </div>
+</div>
 
     <footer>
         <div class="footer-links">
