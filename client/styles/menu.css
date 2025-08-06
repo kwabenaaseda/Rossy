@@ -370,12 +370,17 @@ body.dark-mode .remove-btn:hover {
 
 .show{
   position: fixed;
-  top:-25em;
-  width: 85em;
-  height: 90em;
+  top:9em;
+  width: 20em;
+  height: max-content;
   z-index: 10000;
   overflow: hidden;
-  transition: all ease-in-out 1s;
+  transition: all ease-in-out 3s;
+  left: 2em;
+  border: 1px solid none;
+  display: flex;
+  border-radius: 20em;
+  
 }
 .show.close{
   transition: all ease-in-out 1s;

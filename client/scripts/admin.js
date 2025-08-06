@@ -192,7 +192,7 @@ function handleFormSubmit() {
                 country: productCountry,
                 availability,
                 category: productCategory,
-                image: productImage || products[index].image || '../images/default-product.jpg'
+                image: productImage || products[index].image || '../images/ginger.png'
             };
         }
     } else {
@@ -204,7 +204,7 @@ function handleFormSubmit() {
             country: productCountry,
             availability,
             category: productCategory,
-            image: productImage || '../images/default-product.jpg',
+            image: productImage || '../images/ginger.png',
             quantity: 0
         };
         products.push(newProduct);

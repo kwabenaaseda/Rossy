@@ -148,7 +148,8 @@ function removeCartItem(e) {
 function updateOrderSummary() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const products = JSON.parse(localStorage.getItem('products')) || [];
-  const subtotalEl = document.querySelector('.summary-row:nth-child(1) span:last-child');
+  const subtotalEl = document.getElementById('Subtotal');
+  console.log(subtotalEl)
   if (!subtotalEl) return;
   let subtotal = 0;
   
@@ -166,10 +167,10 @@ if (isNaN(price)) {
   const deliveryFee = 5.00;
   const total = subtotal + tax + deliveryFee;
   
-  document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = `${subtotal.toFixed(2)} GHS`;
-  document.querySelector('.summary-row:nth-child(2) span:last-child').textContent = `${tax.toFixed(2)} GHS`;
-  document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = `${deliveryFee.toFixed(2)} GHS`;
-  document.querySelector('.summary-row.total span:last-child').textContent = `${total.toFixed(2)} GHS`;
+  document.getElementById('Subtotal').textContent = `${subtotal.toFixed(2)} GHS`;
+  document.getElementById('Tax').textContent = `${tax.toFixed(2)} GHS`;
+  document.getElementById('Delivery_Fee').textContent = `${deliveryFee.toFixed(2)} GHS`;
+  document.getElementById('total_price').textContent = `${total.toFixed(2)} GHS`;
 }
 
 // Place order
@@ -210,6 +211,8 @@ function placeOrder() {
   updateCartCount();
   
   alert('Order placed successfully!');
+  //Check to see if user exists in database
+  
   window.location.href = '../index.html';
 }
 

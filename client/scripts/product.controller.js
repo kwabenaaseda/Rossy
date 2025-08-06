@@ -189,9 +189,11 @@ function toggleMobileMenu() {
 
 // Update DOMContentLoaded event listener:
 document.addEventListener('DOMContentLoaded', () => {
+  
   setTimeout(() => {
     document.querySelector('video').classList.add('close')
-},4000);
+    
+},5000);
   displayProducts();
   updateCartCount();
   initDarkMode();
