@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Rossy's Sunny Side</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/cart.css">
+        <link rel="stylesheet" href="../styles/mobile-nav.css" />
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="../index.html" class="logo">Rossy's</a>
+            <nav>
+                <ul>
+                    <li><a href="../pages/menu.html">Menu</a></li>
+                    <li><a href="../pages/cart.html" class="active">Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+       <div class="header-right">
+  <button id="darkMode">🌑</button>
+  <a href="./cart.html" class="cart-indicator">
+    🛒 <span class="cart-count">0</span>
+  </a>
+</div>
+    </header>
+
+    <main class="cart-container">
+        <section class="cart-items">
+            <h1>Your Cart</h1>
+            <h2>Selected Beverages</h2>
+            
+            <div class="cart-item">
+                <div class="item-info">
+                    <h3>Ghanaian Ginger Beer</h3>
+                    <div class="item-price">15.00 GHS</div>
+                </div>
+                <div class="item-quantity">
+                    <button class="quantity-btn">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="remove-btn">Remove</button>
+            </div>
+            
+            <div class="cart-item">
+                <div class="item-info">
+                    <h3>Sobolo (Hibiscus Drink)</h3>
+                    <div class="item-price">12.00 GHS</div>
+                </div>
+                <div class="item-quantity">
+                    <button class="quantity-btn">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="remove-btn">Remove</button>
+            </div>
+            
+            <div class="cart-item">
+                <div class="item-info">
+                    <h3>Asaana (Corn Drink)</h3>
+                    <div class="item-price">10.00 GHS</div>
+                </div>
+                <div class="item-quantity">
+                    <button class="quantity-btn">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="remove-btn">Remove</button>
+            </div>
+        </section>
+
+        <section class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>37.00 GHS</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax (5%):</span>
+                <span>1.85 GHS</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery Fee:</span>
+                <span>5.00 GHS</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span>43.85 GHS</span>
+            </div>
+        </section>
+
+        <section class="delivery-info">
+            <h2>Delivery Information</h2>
+            <form class="delivery-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+233 24 123 4567">
+                </div>
+                <div class="form-group">
+                    <label for="address">Street Address</label>
+                    <input type="text" id="address" placeholder="123 High Street">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Accra">
+                </div>
+                <div class="form-group">
+                    <label for="region">Region/District</label>
+                    <select id="region">
+                        <option value="">Select a region</option>
+                        <option value="greater-accra">Greater Accra</option>
+                        <option value="ashanti">Ashanti</option>
+                        <option value="western">Western</option>
+                        <option value="eastern">Eastern</option>
+                        <option value="central">Central</option>
+                    </select>
+                </div>
+            </form>
+        </section>
+
+        <button class="place-order-btn">Place Order</button>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Contact Rossy</a>
+            <a href="#">Terms of service</a>
+            <a href="#">Website Guidelines</a>
+        </div>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">F</a>
+            <a href="#" aria-label="Instagram">I</a>
+            <a href="#" aria-label="Twitter">T</a>
+        </div>
+        <div class="copyright">
+            <p>© 2023 Rossy's Sunny Side. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/cart.js"></script>
+    <!-- Mobile Navigation -->
+<div class="mobile-nav">
+  <a href="../index.html">
+    <span>🏠</span>
+    <span>Home</span>
+  </a>
+  <a href="./menu.html" class="active">
+    <span>📋</span>
+    <span>Menu</span>
+  </a>
+  <a href="./cart.html">
+    <span>🛒</span>
+    <span>Cart</span>
+  </a>
+  <a href="./admin.html">
+    <span>👤</span>
+    <span>Admin</span>
+  </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rossy's Sunny Side | MENU📃🍴</title>
+    <link rel="stylesheet" href="../styles/menu.css" />
+    <link rel="stylesheet" href="../styles/products.css" />
+    <link rel="stylesheet" href="../styles/mobile-nav.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <a href="#" class="logo">Rossy's</a>
+        <nav>
+          <ul>
+            <li><a href="./cart.html">Menu</a></li>
+            <li><a href="./testing.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-right">
+        <div class="search-container">
+          <input type="text" placeholder="Search for drinks..." />
+          <button class="search-btn">🔍</button>
+        </div>
+        <a href="./cart.html" class="cart-btn">
+  🛒 <span class="cart-count">0</span>
+</a>
+        <button id="darkMode">🌑</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Our Refreshing Menu</h1>
+        <p>Discover the authentic taste of Ghana with our selection of traditional and modern beverages. Crafted with passion, ready for your sip.</p>
+      </section>
+
+      <section class="categories">
+        <ul>
+          <li class="active">All</li>
+          <li>Soft Drinks</li>
+          <li>Sobolo</li>
+          <li>Alcohol</li>
+        </ul>
+      </section>
+
+      <section class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="availability in-stock">In Stock</span>
+          </div>
+          <div class="product-info">
+            <h3>Fanta</h3>
+            <div class="price-stock">
+              <span class="price">GHC 3.50</span>
+              <span class="stock in-stock">In Stock</span>
+            </div>
+            <button class="buy-btn">Buy Now</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <span class="availability in-stock">In Stock</span>
+          </div>
+          <div class="product-info">
+            <h3>Premium Sobolo</h3>
+            <div class="price-stock">
+              <span class="price">GHC 5.00</span>
+              <span class="stock in-stock">In Stock</span>
+            </div>
+            <button class="buy-btn">Buy Now</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <span class="availability out-of-stock">Out of Stock</span>
+          </div>
+          <div class="product-info">
+            <h3>Ghanaian Lager</h3>
+            <div class="price-stock">
+              <span class="price">GHC 8.00</span>
+              <span class="stock out-of-stock">Out of Stock</span>
+            </div>
+            <button class="buy-btn" disabled>Out of Stock</button>
+          </div>
+        </div>
+
+        <!-- Add more product cards as needed -->
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">Contact Rossy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Website Guidelines</a>
+      </div>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">F</a>
+        <a href="#" aria-label="Instagram">I</a>
+        <a href="#" aria-label="Twitter">T</a>
+      </div>
+      <div class="copyright">
+        <p>© 2023 Rossy's Sunny Side. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="../scripts/product.controller.js"></script>
+    <!-- Mobile Navigation -->
+<div class="mobile-nav">
+  <a href="../index.html">
+    <span>🏠</span>
+    <span>Home</span>
+  </a>
+  <a href="./menu.html" class="active">
+    <span>📋</span>
+    <span>Menu</span>
+  </a>
+  <a href="./cart.html">
+    <span>🛒</span>
+    <span>Cart</span>
+  </a>
+  <a href="./admin.html">
+    <span>👤</span>
+    <span>Admin</span>
+  </a>
+</div>
+  </body>
+</html>

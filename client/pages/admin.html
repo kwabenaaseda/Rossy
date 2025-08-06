@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Rossy's Sunny Side</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="../styles/mobile-nav.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="../index.html" class="logo">Rossy's Admin</a>
+            <nav>
+                <ul>
+                    <li><a href="./menu.html">Menu</a></li>
+                    <li><a href="./cart.html">Cart</a></li>
+                    <li><a href="./admin.html" class="active">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button id="darkMode">🌑</button>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <section class="dashboard-overview">
+            <h1>Admin Dashboard Overview</h1>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Products</h3>
+                    <p class="stat-value" id="totalProducts">0</p>
+                    <p class="stat-label">Beverages on the menu</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Products in Stock</h3>
+                    <p class="stat-value" id="inStockProducts">0</p>
+                    <p class="stat-label">Currently available items</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Out of Stock</h3>
+                    <p class="stat-value" id="outOfStockProducts">0</p>
+                    <p class="stat-label">Items needing restock</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-management">
+            <div class="section-header">
+                <h2>Product Management</h2>
+                <button class="add-product-btn" id="addProductBtn">+ Add New Product</button>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <section class="notification-settings">
+            <h2>Notification Settings</h2>
+            <p>Configure how you receive updates on product availability changes and new orders.</p>
+            
+            <div class="notification-card">
+                <h3>Email Notifications</h3>
+                <p>Configure email alerts for new orders, delivery status, and newsletters.</p>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="emailNotifications">
+                        <span class="slider round"></span>
+                    </label>
+                    <button class="configure-btn">Configure</button>
+                </div>
+            </div>
+            
+            <div class="notification-card">
+                <h3>SMS Notifications</h3>
+                <p>Manage settings for order updates and promotional messages via SMS.</p>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="smsNotifications">
+                        <span class="slider round"></span>
+                    </label>
+                    <button class="configure-btn">Configure</button>
+                </div>
+            </div>
+            
+            <button class="save-settings-btn">Save Settings</button>
+        </section>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle">Add New Product</h2>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="productImage">Product Image URL</label>
+                    <input type="text" id="productImage" placeholder="Paste image URL">
+                    <span class="or-divider">OR</span>
+                    <label for="productImageFile">Upload Image</label>
+                    <input type="file" id="productImageFile" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" placeholder="Enter product name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productCategory">Category</label>
+                    <input type="text" id="productCategory" placeholder="Enter category" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select name="currency" id="currency" required>
+                            <option value="">-- Choose currency --</option>
+                            <option value="GHC ">Ghana (GHC)</option>
+                            <option value="USD ">USA (USD)</option>
+                            <option value="¥ ">China (Yuan)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Price</label>
+                        <input type="number" id="productPrice" placeholder="Enter price" step="0.01" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Availability</label>
+                    <div class="availability-toggle">
+                        <div id="rollerBodys" class="roller-body">
+                            <div id="rollers" class="roller"></div>
+                        </div>
+                        <span id="availabilityStatus">Out of Stock</span>
+                    </div>
+                </div>
+                
+                <button type="submit" id="submitBtn" class="submit-btn">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Company</a>
+            <a href="#">Legal</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="copyright">
+            <p>© 2023 Rossy's Sunny Side. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <a href="../index.html">
+            <span>🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="./menu.html">
+            <span>📋</span>
+            <span>Menu</span>
+        </a>
+        <a href="./cart.html">
+            <span>🛒</span>
+            <span>Cart</span>
+        </a>
+        <a href="./admin.html" class="active">
+            <span>👤</span>
+            <span>Admin</span>
+        </a>
+    </div>
+
+    <script src="../scripts/admin.js"></script>
+</body>
+</html>
