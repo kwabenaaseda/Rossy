@@ -83,7 +83,6 @@ function displayProducts() {
 function addToCart(productId) {
   const products = JSON.parse(localStorage.getItem('products')) || [];
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
@@ -190,6 +189,9 @@ function toggleMobileMenu() {
 
 // Update DOMContentLoaded event listener:
 document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelector('video').classList.add('close')
+},4000);
   displayProducts();
   updateCartCount();
   initDarkMode();
