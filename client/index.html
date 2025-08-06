@@ -3,9 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rossy's Sunny Side - Authentic Ghanaian Beverages</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/mobile-nav.css">
 </head>
 <body>
-    
+    <header>
+        <div class="header-left">
+            <a href="index.html" class="logo">Rossy's</a>
+            <nav>
+                <ul>
+                    <li><a href="pages/menu.html">Menu</a></li>
+                    <li><a href="pages/cart.html">Cart</a></li>
+                    <li><a href="pages/admin.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button id="darkMode">🌑</button>
+            <a href="pages/cart.html" class="cart-indicator">
+                🛒 <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Taste the Spirit of Ghana</h1>
+                <p>Experience authentic Ghanaian beverages, crafted with tradition and passion, delivered fresh to your door.</p>
+                <a href="pages/menu.html" class="cta-button">Explore Our Menu</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🍹</div>
+                <h3>Authentic Recipes</h3>
+                <p>Handcrafted using age-old Ghanaian recipes passed down through generations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Fast Delivery</h3>
+                <p>Quick and reliable delivery straight to your doorstep across the city.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌿</div>
+                <h3>Quality Ingredients</h3>
+                <p>Only the freshest, locally sourced ingredients are used in our beverages.</p>
+            </div>
+        </section>
+
+        <section class="popular-items">
+            <h2>Our Signature Drinks</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('../images/sobolo.jpg');"></div>
+                    <h3>Classic Sobolo</h3>
+                    <p>Refreshing hibiscus drink with ginger and spices</p>
+                    <div class="item-price">GHC 15.00</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('../images/asaana.jpg');"></div>
+                    <h3>Asaana</h3>
+                    <p>Traditional fermented corn drink with caramel notes</p>
+                    <div class="item-price">GHC 18.00</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('../images/ginger-beer.jpg');"></div>
+                    <h3>Ginger Beer</h3>
+                    <p>Spicy and refreshing homemade ginger beer</p>
+                    <div class="item-price">GHC 12.00</div>
+                </div>
+            </div>
+            <a href="pages/menu.html" class="cta-button secondary">View Full Menu</a>
+        </section>
+
+        <section class="about">
+            <div class="about-content">
+                <h2>Our Passion, Your Refreshment</h2>
+                <p>At Rossy's Sunny Side, we believe in bringing the vibrant, authentic tastes of Ghana directly to you. Our journey began with a simple passion: to share the rich heritage of Ghanaian beverages, crafted with the freshest local ingredients and time-honored traditions.</p>
+                <p>We meticulously select our ingredients, from the sun-ripened hibiscus for our Sobolo to the freshest fruits for our unique blends. Our commitment to quality ensures that each drink is not just refreshing, but a true experience.</p>
+            </div>
+            <div class="about-image"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Contact Us</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Website Guidelines</a>
+        </div>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">F</a>
+            <a href="#" aria-label="Instagram">I</a>
+            <a href="#" aria-label="Twitter">T</a>
+        </div>
+        <div class="copyright">
+            <p>© 2023 Rossy's Sunny Side. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <a href="index.html" class="active">
+            <span>🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="pages/menu.html">
+            <span>📋</span>
+            <span>Menu</span>
+        </a>
+        <a href="pages/cart.html">
+            <span>🛒</span>
+            <span>Cart</span>
+        </a>
+        <a href="pages/admin.html">
+            <span>👤</span>
+            <span>Admin</span>
+        </a>
+    </div>
+
+    <script src="scripts/landing.js"></script>
 </body>
 </html>
