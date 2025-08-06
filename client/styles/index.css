@@ -85,7 +85,7 @@ nav a:hover, nav a.active {
 /* Hero Section */
 .hero {
     height: 80vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/back.png');
     background-size: cover;
     background-position: center;
     display: flex;
